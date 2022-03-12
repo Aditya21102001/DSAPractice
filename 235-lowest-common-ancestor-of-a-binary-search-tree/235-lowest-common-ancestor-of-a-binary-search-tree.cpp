@@ -11,6 +11,7 @@
 class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
+        /*optimized
         if(root==NULL)
         {
             return NULL;
@@ -26,6 +27,22 @@ public:
         else
         {
             return lowestCommonAncestor(root->right, p, q);
+        }*/
+        //for normal binary tree also
+        if(root==NULL)
+        {
+            return root;
         }
+        if(root==p || root==q)
+        {
+            return root;
+        }
+        TreeNode *l=lowestCommonAncestor(root->left, p, q);
+        TreeNode *r=lowestCommonAncestor(root->right, p, q);
+        if(l!=NULL && r!=NULL)
+            return root;
+        if(l!=NULL)
+            return l;
+        return r;
     }
 };
