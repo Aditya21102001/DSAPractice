@@ -17,25 +17,6 @@ public:
         }
         return r;
     }
-    int longestSubsequence(int n, int a[])
-    {
-       vector<int> lcs;
-       lcs.push_back(a[0]);
-       for(int i=1; i<n; i++)
-       {
-           int l=lcs.size();
-           if(a[i]>lcs[l-1])
-           {
-               lcs.push_back(a[i]);
-           }
-           else
-           {
-               int in=ci(lcs, lcs.size(), a[i]);
-               lcs[in]=a[i];
-           }
-       }
-       return lcs.size();
-    }
     int lengthOfLIS(vector<int>& a) {
         int n=a.size();
         vector<int> lcs;
