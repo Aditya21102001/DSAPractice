@@ -11,15 +11,6 @@
  */
 class Solution {
 public:
-    void helper(TreeNode* l, TreeNode* r)
-    {
-        if(l==NULL && r==NULL)
-            return;
-        if(l!=NULL || r!=NULL)
-            return;
-        swap(l->val, r->val);
-        
-    }
     TreeNode* invertTree(TreeNode* root) {
         if(root==NULL)
             return root;
