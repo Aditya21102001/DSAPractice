@@ -23,11 +23,6 @@ public:
     TreeNode* invertTree(TreeNode* root) {
         if(root==NULL)
             return root;
-        // if(root->left==NULL && root->right==NULL)
-        //     return root;
-        // if(root->left!=NULL || root->right!=NULL)
-        //     return root;
-        //swap(root->left->val, root->right->val);
         TreeNode* t=root->left;
         root->left=invertTree(root->right);
         root->right=invertTree(t);
