@@ -12,7 +12,7 @@
 class Solution {
 public:
     vector<vector<int>> ans;
-    void hasPathSum(TreeNode* root, int targetSum, vector<int> v) {
+    void hasPathSum(TreeNode* root, int targetSum, vector<int> &v) {
         if(root==NULL)
             return;
         targetSum-=root->val;
@@ -22,12 +22,13 @@ public:
             if(targetSum==0)
             {
                 ans.push_back(v);
+                v.pop_back();
                 return;
             }
         }
         hasPathSum(root->left, targetSum, v);
         hasPathSum(root->right, targetSum, v);
-        //v.pop_back();
+        v.pop_back();
     }
     vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
         vector<int> v;
