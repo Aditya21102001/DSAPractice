@@ -8,9 +8,10 @@ public:
         while(n>1)
         {
             int j=ans.size()-1;
+            int t=pow(2, c);
             while(j>=0)
             {
-                ans.push_back(ans[j]+pow(2, c));
+                ans.push_back(ans[j]+t);
                 j--;
             }
             n--;
