@@ -28,7 +28,7 @@ public:
 	            cu=0;
 	        }
 	    }
-	    if(cu>res || (cu==res && c_s-c_e<s-e))
+	    if(cu>res || (cu==res && abs(c_s-c_e)>abs(s-e)))
         {
             res=cu;
             s=c_s;
