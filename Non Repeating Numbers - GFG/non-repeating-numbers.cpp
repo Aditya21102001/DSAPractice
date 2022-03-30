@@ -14,7 +14,7 @@ public:
         {
             res=res^nums[i];
         }
-        int d=res&(-res);
+        int d=res&(~(res-1));
         for(int i=0; i<n; i++)
         {
             if(nums[i]&d)
