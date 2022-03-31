@@ -109,8 +109,9 @@ public:
     {
         if (!root)
             return;
-        if (root->left || root->right)
-            res.push_back(root->data);
+        if (!root->left && !root->right)
+            return;
+        res.push_back(root->data);
 
         if (root->left)
             leftSide(root->left, res);
