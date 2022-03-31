@@ -123,12 +123,11 @@ public:
     {
         if (!root)
             return;
-
+        if (root->left)
+            leaf(root->left, res);
         if (!root->left && !root->right)
             res.push_back(root->data);
 
-        if (root->left)
-            leaf(root->left, res);
         if (root->right)
             leaf(root->right, res);
     }
