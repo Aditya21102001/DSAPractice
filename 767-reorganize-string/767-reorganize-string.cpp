@@ -63,21 +63,15 @@ public:
                         }
                         else
                         {
-                            if(j%2!=0)
-                            {
-                                ans[j]=it->first;
-                                j+=2;
-                            }
+                            ans[j]=it->first;
+                            j+=2;
                         }
                     }
                 }
                 else
                 {
-                    if(j%2!=0)
-                    {
-                        ans[j]=it->first;
-                        j+=2;
-                    }
+                    ans[j]=it->first;
+                    j+=2;
                 }
             }
         }
