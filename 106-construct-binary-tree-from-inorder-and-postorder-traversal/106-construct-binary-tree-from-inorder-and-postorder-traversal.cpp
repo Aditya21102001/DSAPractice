@@ -19,8 +19,6 @@ public:
         }
         TreeNode *root=new TreeNode(pos[pr--]);
         int ind=0;
-        if(is==ie)
-            return root;
         for(int i=is; i<=ie; i++)
         {
             if(in[i]==root->val)
