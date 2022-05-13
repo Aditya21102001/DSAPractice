@@ -1,13 +1,11 @@
 class Solution {
 public:
-    //vector<vector<vector<int>>> memo(4,vector<vector<int>>(3,vector<int>(n,-1)));
     vector<vector<vector<int>>>memo;
     int dx[8]={-2, -2, -1, 1, 2, 2, 1, -1};
     int dy[8]={-1, 1, 2, 2, 1, -1, -2, -2};
+    //vector<vector<int>> mat={{1,2,3},{4,5,6},{7,8,9},{-1,0,-1}};
     int rec(int i, int j, int l)
     {
-        if(i<0 or i>3 or j<0 or j>2 or (i==3 and j==2) or (i==3 and j==0))
-            return 0;
         if(l==0)
         {
             return 1;
@@ -17,19 +15,17 @@ public:
         int ans=0;
         for(int k=0; k<8; k++)
         {
-            int nr=dx[k]+i;
-            int nc=dy[k]+j;
-            if(nr<0 or nc<0 or nr>3 or nc>2 or (nr==3 and (nc==0 or nc==2)))
+            if((dx[k]+i>=0 && dx[k]+i<=3) && (dy[k]+j>=0 && dy[k]+j<3))
             {
-                continue;
-            }
-            else 
-            {
-                ans=(ans%1000000007+rec(nr,nc,l-1)%1000000007)%1000000007;
+                if(dx[k]+i==3 && (dy[k]+j==0 || dy[k]+j==2))
+                {
+                    continue;
+                }
+                ans=(ans%1000000007+rec(dx[k]+i, dy[k]+j,l-1)%1000000007)%1000000007;
             }
         }
         return memo[i][j][l]=ans;
-     }
+    }
     int knightDialer(int n) {
         memo=vector<vector<vector<int>>>(4,vector<vector<int>>(3,vector<int>(n,-1)));
         int ans=0;
@@ -37,6 +33,10 @@ public:
         {
             for(int j=0; j<3; j++)
             {
+                if((i==3 && j==0) || (i==3 && j==2))
+                {
+                    continue;
+                }
                 ans=(ans%1000000007+rec(i, j, n-1)%1000000007)%1000000007;
             }
         }
