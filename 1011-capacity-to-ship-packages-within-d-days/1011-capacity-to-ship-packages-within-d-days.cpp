@@ -26,6 +26,7 @@ public:
     int shipWithinDays(vector<int>& wt, int days) {
         //sort(wt.begin(), wt.end());
         int s=*max_element(wt.begin(),wt.end()), e=0, ans=-1;
+        s=0;
         for(int i=0; i<wt.size(); i++)
         {
             e+=wt[i];
