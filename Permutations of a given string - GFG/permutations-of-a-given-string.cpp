@@ -6,31 +6,30 @@ using namespace std;
 class Solution
 {
 	public:
-	    void per(string s, vector<string>& ans, string& st, vector<bool>& fr)
+	    void per(string s, vector<string>& ans, int in)
 	    {
-	        if(st.length()==s.length())
+	        if(in==s.length())
 	        {
-	            ans.push_back(st);
+	            ans.push_back(s);
 	        }
-	        for(int i=0; i<s.length(); i++)
+	        set<char> st;
+	        for(int i=in; i<s.length(); i++)
 	        {
-	            if(!fr[i])
+	            if(st.count(s[i]))
 	            {
-	                st.push_back(s[i]);
-	                fr[i]=true;
-	                per(s, ans, st, fr);
-	                st.pop_back();
-	                fr[i]=false;
+	                continue;
 	            }
+	            st.insert(s[i]);
+	            swap(s[i], s[in]);
+	            per(s, ans, in+1);
+	            swap(s[i], s[in]);
 	        }
 	        return ;
 	    }
 		vector<string>find_permutation(string S)
 		{
 		    vector<string> ans;
-		    vector<bool> fr(S.length(), false);
-		    string st;
-		    per(S, ans, st, fr);
+		    per(S, ans, 0);
 		    sort(ans.begin(), ans.end());
 		    return ans;
 		}
