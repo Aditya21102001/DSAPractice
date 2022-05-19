@@ -14,23 +14,23 @@ vector<string> AllParenthesis(int n) ;
 class Solution
 {
     public:
-    void helper(vector<string> &v,string s,int n,int m)
+    void helper(vector<string> &v,string s,int o,int c, int n)
     {
-         if(n==0&&m==0)
+         if(o==n && c==n)
          {
             v.push_back(s);
             return;
          }
-          if(n>0)
-            helper(v,s+"(",n-1,m+1);
-          if(m>0)
-            helper(v,s+")",n,m-1);   
+          if(o<n)
+            helper(v,s+"(", o+1, c, n);
+          if(c<o)
+            helper(v,s+")", o, c+1, n);   
     }
     vector<string> AllParenthesis(int n) 
     {
         vector<string> ans;
         string s;
-        helper(ans, s, n, 0);
+        helper(ans, s, 0, 0, n);
         return ans;
     }
 };
