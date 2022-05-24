@@ -36,14 +36,6 @@ public:
         {
             ans|=dfs(board, i+dx[k], j+dy[k], check, n, m);
         }
-        // bool ans = dfs(board,i-1,j-1,check,n,m);
-        // ans|= dfs(board,i-1,j,check,n,m);
-        // ans|= dfs(board,i-1,j+1,check,n,m);
-        // ans|= dfs(board,i,j-1,check,n,m);
-        // ans|= dfs(board,i,j+1,check,n,m);
-        // ans|= dfs(board,i+1,j-1,check,n,m);
-        // ans|= dfs(board,i+1,j,check,n,m);
-        // ans|= dfs(board,i+1,j+1,check,n,m);
         board[i][j]=temp;
         return ans;
     }
