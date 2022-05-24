@@ -34,7 +34,11 @@ public:
         bool ans=false;
         for(int k=0; k<8; k++)
         {
-            ans|=dfs(board, i+dx[k], j+dy[k], check, n, m);
+            if(dfs(board, i+dx[k], j+dy[k], check, n, m))
+            {
+                ans=true;
+                break;
+            }
         }
         board[i][j]=temp;
         return ans;
