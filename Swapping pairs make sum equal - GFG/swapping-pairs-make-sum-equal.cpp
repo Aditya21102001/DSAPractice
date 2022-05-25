@@ -19,20 +19,22 @@ class Solution{
         {
             sb+=b[i];
         }
-        for(int i=0; i<n; i++)
-        {
-            if(sb-sa+2*a[i]<0 || (sb-sa+2*a[i])%2!=0)
-            {
-                continue;
-            }
-            int k=(sb-sa+2*a[i])/2;
-            int in=lower_bound(b, b+m, k)-b;
-            if(in<m && b[in]==k)
-            {
-                return 1;
-            }
-        }
-        return -1;
+        int i=0;
+	    int j=0;
+	    while(i<n && j<m){
+	        int p = sa-a[i]+b[j];
+	        int q = sb-b[j]+a[i];
+	        if(p==q){
+	            return 1;
+	        }
+	        else if(p>q){
+	            i++;
+	        }
+	        else{
+	            j++;
+	        }
+	    }
+	    return -1;
 	}
  
 
