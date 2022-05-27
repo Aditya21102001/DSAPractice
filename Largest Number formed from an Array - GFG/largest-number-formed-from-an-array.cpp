@@ -13,6 +13,10 @@ public:
 	// The function accepts a vector of strings
 	static bool cmp(string a, string b)
 	{
+	    if(a==b)
+	    {
+	        return a+b>=b+a;
+	    }
 	    return a+b>b+a;
 	}
 	string printLargest(vector<string> &arr) {
