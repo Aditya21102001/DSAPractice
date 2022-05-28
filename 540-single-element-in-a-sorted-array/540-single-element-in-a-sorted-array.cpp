@@ -32,6 +32,6 @@ public:
                 }
             }
         }
-        return arr[m];
+        return -1;
     }
 };
