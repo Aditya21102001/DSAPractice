@@ -10,8 +10,9 @@ using namespace std;
 class Solution{
 public:
     vector<int> leftSmaller(int n, int a[]){
+        //reverse(a.begin(), a.end());
         vector<int> ans;
-        stack<int> st;
+        stack<long long> st;
         ans.push_back(-1);
         st.push(a[0]);
         for(int i=1; i<n; i++)
@@ -30,6 +31,7 @@ public:
             }
             st.push(a[i]);
         }
+        //reverse(ans.begin(), ans.end());
         return ans;
     }
 };
