@@ -42,11 +42,11 @@ class Solution{
                 }
                 if(st.empty())
                 {
-                    ps[j]=0;
+                    ps[j]=-1;
                 }
                 else
                 {
-                    ps[j]=st.top()+1;
+                    ps[j]=st.top();
                 }
                 st.push(j);
             }
@@ -60,18 +60,18 @@ class Solution{
                 }
                 if(st.empty())
                 {
-                    ns[j]=m-1;
+                    ns[j]=m;
                 }
                 else
                 {
-                    ns[j]=st.top()-1;
+                    ns[j]=st.top();
                 }
                 st.push(j);
             }
             int res=0;
             for(int j=0; j<m; j++)
             {
-                res=max(res, (ns[j]-ps[j]+1)*cur[j]);
+                res=max(res, (ns[j]-ps[j]-1)*cur[j]);
             }
             ans=max(ans, res);
         }
