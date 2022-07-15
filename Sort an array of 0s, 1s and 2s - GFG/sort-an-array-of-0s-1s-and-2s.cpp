@@ -10,39 +10,19 @@ class Solution
     public:
     void sort012(int a[], int n)
     {
-        // int i=0, j=n-1;
-        // for(int k=0; k<=j; k++)
-        // {
-        //     if(a[k]==0)
-        //     {
-        //         swap(a[i], a[k]);
-        //         i++;
-        //     }
-        //     else if(a[k]==2)
-        //     {
-        //         swap(a[k], a[j]);
-        //         j--;
-        //     }
-        // }
-        int l=0;
-        int m=0;
-        int h=n-1;
-        while(m<=h)
+        int i=0, j=n-1;
+        for(int k=0; k<=j; k++)
         {
-            if(a[m]==0)
+            if(a[k]==0)
             {
-                swap(a[l], a[m]);
-                m++;
-                l++;
+                swap(a[i], a[k]);
+                i++;
             }
-            else if(a[m]==1)
+            else if(a[k]==2)
             {
-                m++;
-            }
-            else
-            {
-                swap(a[m], a[h]);
-                h--;
+                swap(a[k], a[j]);
+                j--;
+                k--;
             }
         }
     }
