@@ -1,80 +1,52 @@
 class Solution {
 public:
-    string reorganizeString(string s) {
-        int cn=0;
-        char c;
-        unordered_map<char, int> mp;
-        for(int i=0; i<s.length(); i++)
+    string reorganizeString(string str) {
+        map<char, int> mp;
+        int n=str.length();
+        for(int i=0; i<n; i++)
         {
-            mp[s[i]]++;
+            mp[str[i]]++;
         }
-        for(auto it=mp.begin(); it!=mp.end(); it++)
-        {
-            if(cn<=it->second)
-            {
-                cn=it->second;
-                c=it->first;
-            }
-        }
-        if(cn>(s.length()+1)/2)
-        {
-            return "";
-        }
-        int i;
         string ans="";
-        for(i=0; i<s.length(); i++)
-        {
-            if(cn<=0)
-            {
-                break;
-            }
-            if(i%2==0)
-            {
-                ans+=c;
-                cn--;
-            }
-            else
-            {
-                ans+='1';
-            }
-        }
-        int j=1;
+        int mc=0;
         for(auto it=mp.begin(); it!=mp.end(); it++)
         {
-            if(it->first==c)
-                continue;
-            for(int k=0; k<it->second; k++)
+            mc=max(mc, it->second);
+        }
+        if(mc>(n+1)/2) return "";
+        priority_queue<pair<int ,char>> pq;
+        for(auto it=mp.begin(); it!=mp.end(); it++)
+        {
+            pq.push({it->second, it->first});
+        }
+        while(pq.size()>=2)
+        {
+            pair<int, char> a=pq.top();
+            pq.pop();
+            pair<int, char> b=pq.top();
+            pq.pop();
+            ans+=a.second;
+            ans+=b.second;
+            a.first--;
+            b.first--;
+            if(a.first>0)
             {
-                if(i<s.length())
-                {
-                    if(i<s.length() && i%2==0)
-                    {
-                        ans+=it->first;
-                        i++;
-                    }
-                    else
-                    {
-                        ans+='1';
-                        i++;
-                        if(i<s.length())
-                        {
-                            ans+=it->first;
-                            i++;
-                        }
-                        else
-                        {
-                            ans[j]=it->first;
-                            j+=2;
-                        }
-                    }
-                }
-                else
-                {
-                    ans[j]=it->first;
-                    j+=2;
-                }
+                pq.push({a.first, a.second});
+            }
+            if(b.first>0)
+            {
+                pq.push({b.first, b.second});
             }
         }
+        int nn;
+        if(pq.size()==0) return ans;
+        nn=pq.top().first;
+        while(nn>0)
+        {
+            nn--;
+            ans+=pq.top().second;
+        }
+        //cout<<ans<<endl;
         return ans;
     }
 };
