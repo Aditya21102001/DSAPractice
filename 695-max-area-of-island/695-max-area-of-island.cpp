@@ -15,14 +15,10 @@ public:
         {
             vi[i][j]=1;
             c+=1;
-            //c+=df(i-1, j-1, vi, grid, n, m);
             c+=df(i-1, j, vi, grid, n, m);
-            //c+=df(i-1, j+1, vi, grid, n, m);
             c+=df(i, j-1, vi, grid, n, m);
             c+=df(i, j+1, vi, grid, n, m);
-            //c+=df(i+1, j-1, vi, grid, n, m);
             c+=df(i+1, j, vi, grid, n, m);
-            //c+=df(i+1, j+1, vi, grid, n, m);
         }
         return c;
     }
